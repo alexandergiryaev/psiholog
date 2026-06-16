@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Наталья Иванова — практикующий психолог с опытом более 20 лет. Бережная поддержка для женщин. Онлайн и очно.">
+  <title>Наталья Иванова — психолог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --bg-alt: #f3efe8;
+      --bg-card: #ffffff;
+      --text: #2c2825;
+      --text-muted: #6b6560;
+      --accent: #7a8f7a;
+      --accent-dark: #5f7260;
+      --accent-soft: #e8efe8;
+      --border: #e5dfd6;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(44, 40, 37, 0.06);
+      --max: 1080px;
+      --header-h: 72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--accent-dark); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--text); }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .logo span {
+      display: block;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav__links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      line-height: 1.2;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background: var(--text);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--accent-dark);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--accent-dark);
+      background: var(--accent-soft);
+    }
+
+    .btn--full { width: 100%; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.is-open span:nth-child(2) { opacity: 0; }
+    .burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Hero */
+    .hero {
+      padding: calc(var(--header-h) + 4rem) 0 5rem;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__subtitle {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero__meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero__note {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      max-width: 28rem;
+    }
+
+    .hero__photo {
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, var(--bg-alt) 0%, var(--accent-soft) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+
+    section:nth-child(even) { background: var(--bg-alt); }
+
+    .section-header {
+      max-width: 36rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header--center {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      padding: 3.5rem 0;
+      background: var(--bg-alt);
+    }
+
+    .intro__text {
+      max-width: 38rem;
+      margin-inline: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .intro__text em {
+      font-style: italic;
+      color: var(--accent-dark);
+    }
+
+    .intro__sub {
+      max-width: 32rem;
+      margin: 1.25rem auto 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.35rem;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    section:nth-child(even) .card { background: var(--bg); }
+
+    .card:hover {
+      box-shadow: var(--shadow);
+      border-color: transparent;
+    }
+
+    .card::before {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-bottom: 0.65rem;
+    }
+
+    .footnote {
+      margin-top: 1.75rem;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+
+    section:nth-child(even) .step { background: var(--bg); }
+
+    .step__num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .step__title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step__text {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .highlight-box {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      background: var(--accent-soft);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--accent);
+      font-size: 0.9375rem;
+    }
+
+    .highlight-box strong { font-weight: 600; }
+
+    /* About */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about__photo {
+      aspect-ratio: 3/4;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, var(--bg-alt) 0%, var(--accent-soft) 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-align: center;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .about__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about__text p + p { margin-top: 1rem; }
+
+    .about__facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+      list-style: none;
+    }
+
+    .about__facts li {
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    section:nth-child(even) .about__facts li { background: var(--bg); }
+
+    .placeholder {
+      color: var(--accent-dark);
+      background: rgba(122, 143, 122, 0.12);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    /* Principles */
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .principle {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      font-size: 0.9375rem;
+    }
+
+    section:nth-child(even) .principle { background: var(--bg); }
+
+    .principle strong {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    /* Results list */
+    .results-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 2rem;
+      list-style: none;
+    }
+
+    .results-list li {
+      padding-left: 1.25rem;
+      position: relative;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .results-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* Accordion */
+    .accordion { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .accordion__item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    section:nth-child(even) .accordion__item { background: var(--bg); }
+
+    .accordion__trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.15rem 1.35rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-align: left;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .accordion__trigger:hover { background: var(--accent-soft); }
+
+    .accordion__icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+
+    .accordion__icon::before,
+    .accordion__icon::after {
+      content: "";
+      position: absolute;
+      background: var(--accent-dark);
+      border-radius: 1px;
+      transition: transform 0.2s;
+    }
+
+    .accordion__icon::before {
+      width: 12px;
+      height: 2px;
+      top: 9px;
+      left: 4px;
+    }
+
+    .accordion__icon::after {
+      width: 2px;
+      height: 12px;
+      top: 4px;
+      left: 9px;
+    }
+
+    .accordion__item.is-open .accordion__icon::after {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+
+    .accordion__body {
+      display: none;
+      padding: 0 1.35rem 1.15rem;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .accordion__item.is-open .accordion__body { display: block; }
+
+    /* Pricing */
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .pricing-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-table tr:last-child { border-bottom: none; }
+
+    .pricing-table td {
+      padding: 0.85rem 0;
+      font-size: 0.9375rem;
+      vertical-align: top;
+    }
+
+    .pricing-table td:first-child {
+      color: var(--text-muted);
+      width: 40%;
+      padding-right: 1rem;
+    }
+
+    .pricing-table td:last-child { font-weight: 500; }
+
+    .pricing__form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    section:nth-child(even) .pricing__form { background: var(--bg); }
+
+    .pricing__form h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .pricing__form > p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* Reviews */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .review {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    section:nth-child(even) .review { background: var(--bg); }
+
+    .review__text {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      flex: 1;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .review__text::before { content: "\201C"; }
+
+    .review__author {
+      margin-top: 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* CTA final */
+    .cta-final {
+      text-align: center;
+      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--accent-soft) 100%);
+    }
+
+    .cta-final .section-title { margin-bottom: 1rem; }
+
+    .cta-final p {
+      max-width: 32rem;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+    }
+
+    .cta-final .btn { min-width: 240px; }
+
+    /* Footer */
+    .footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .footer__brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer__copy {
+      width: 100%;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__photo { max-width: 280px; margin-inline: auto; order: -1; }
+      .steps { grid-template-columns: 1fr; }
+      .about__grid { grid-template-columns: 1fr; }
+      .about__photo { max-width: 260px; margin-inline: auto; }
+      .pricing__grid { grid-template-columns: 1fr; }
+      .results-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links,
+      .nav > .btn { display: none; }
+
+      .nav.is-open {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 2rem;
+        align-items: stretch;
+      }
+
+      .nav.is-open .nav__links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav.is-open .nav__links a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav.is-open > .btn {
+        display: inline-flex;
+        margin-top: 1.5rem;
+        justify-content: center;
+      }
+
+      .burger { display: flex; }
+
+      .hero { padding-top: calc(var(--header-h) + 2.5rem); }
+      section { padding: 3rem 0; }
+      .about__facts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        Наталья Иванова
+        <span>Психолог</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__links">
+          <li><a href="#requests">Запросы</a></li>
+          <li><a href="#process">Как проходит</a></li>
+          <li><a href="#about">Обо мне</a></li>
+          <li><a href="#pricing">Стоимость</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+        </ul>
+        <a href="#booking" class="btn btn--primary">Записаться</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <span class="hero__badge">Практикующий психолог · 20+ лет опыта</span>
+          <h1 class="hero__title">Вам не обязательно справляться со&nbsp;всем одной</h1>
+          <p class="hero__subtitle">
+            Бережная психологическая поддержка для женщин в&nbsp;непростой жизненной ситуации&nbsp;— когда тревожно, устало, сложно в&nbsp;отношениях или трудно говорить даже близким.
+          </p>
+          <p class="hero__meta">Онлайн и&nbsp;очно · <span class="placeholder">город</span></p>
+          <div class="hero__actions">
+            <a href="#booking" class="btn btn--primary">Записаться на первую встречу</a>
+            <a href="#process" class="btn btn--outline">Как проходит консультация</a>
+          </div>
+          <p class="hero__note">Первая встреча&nbsp;— знакомство. Без обязательств продолжать, если не&nbsp;почувствуете, что вам подходит.</p>
+        </div>
+        <div class="hero__photo" aria-hidden="true">
+          <!-- Замените на: <img src="photo.jpg" alt="Наталья Иванова, психолог"> -->
+          Фото специалиста
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <div class="intro">
+      <div class="container">
+        <p class="intro__text">
+          Иногда поддержка нужна не&nbsp;потому, что вы&nbsp;слабая,<br>
+          <em>а&nbsp;потому что долго приходилось справляться со&nbsp;всем самостоятельно.</em>
+        </p>
+        <p class="intro__sub">Не&nbsp;обязательно ждать, пока станет совсем тяжело. Иногда достаточно вовремя дать себе возможность получить поддержку.</p>
+      </div>
+    </div>
+
+    <!-- Requests -->
+    <section id="requests">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Запросы</p>
+          <h2 class="section-title">С&nbsp;чем ко&nbsp;мне обращаются</h2>
+          <p class="section-desc">Не&nbsp;нужно формулировать «правильный» запрос. Достаточно того, что сейчас занимает вас и&nbsp;мешает жить спокойнее.</p>
+        </div>
+        <div class="cards">
+          <div class="card">Тревога, постоянное напряжение, «не&nbsp;могу расслабиться»</div>
+          <div class="card">Эмоциональное выгорание и&nbsp;усталость от&nbsp;ответственности за&nbsp;всех</div>
+          <div class="card">Сложности в&nbsp;отношениях с&nbsp;партнёром</div>
+          <div class="card">Развод, расставание, перестройка жизни</div>
+          <div class="card">Одиночество и&nbsp;ощущение, что вас не&nbsp;слышат</div>
+          <div class="card">Потеря уверенности в&nbsp;себе</div>
+          <div class="card">Вина, самокритика, внутренние конфликты</div>
+          <div class="card">Последствия психологических травм</div>
+          <div class="card">Жизненные кризисы и&nbsp;важные перемены</div>
+        </div>
+        <p class="footnote">Если вашей ситуации нет в&nbsp;списке&nbsp;— это не&nbsp;повод не&nbsp;писать. На&nbsp;первой встрече разберёмся вместе, чем могу быть полезна.</p>
+      </div>
+    </section>
+
+    <!-- For whom -->
+    <section id="for-whom">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Аудитория</p>
+          <h2 class="section-title">Для кого подходит моя работа</h2>
+          <p class="section-desc">Я&nbsp;работаю с&nbsp;женщинами, которым важно не&nbsp;«исправить себя», а&nbsp;лучше понять, что с&nbsp;ними происходит, и&nbsp;найти опору в&nbsp;сложный период.</p>
+        </div>
+        <div class="cards">
+          <div class="card">Привыкли заботиться о&nbsp;других и&nbsp;редко&nbsp;— о&nbsp;себе</div>
+          <div class="card">Хотят яснее слышать свои чувства и&nbsp;потребности</div>
+          <div class="card">Переживают непростой этап жизни</div>
+          <div class="card">Чувствуют эмоциональное истощение</div>
+          <div class="card">Хотят учиться выстраивать границы&nbsp;— без агрессии и&nbsp;без чувства вины</div>
+          <div class="card">Ищут место, где можно говорить без осуждения</div>
+          <div class="card">Хотят постепенно вернуть ощущение внутренней устойчивости</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Процесс</p>
+          <h2 class="section-title">Как проходит первая встреча</h2>
+          <p class="section-desc">Спокойно, в&nbsp;вашем темпе, без «правильных» ответов.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">01</div>
+            <h3 class="step__title">Знакомство</h3>
+            <p class="step__text">Вы&nbsp;рассказываете, что привело вас сейчас. Я&nbsp;задаю уточняющие вопросы&nbsp;— не&nbsp;чтобы оценить, а&nbsp;чтобы лучше понять вашу ситуацию.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <h3 class="step__title">Прояснение запроса</h3>
+            <p class="step__text">Обсуждаем, что беспокоит сильнее всего и&nbsp;чего вы&nbsp;хотели&nbsp;бы от&nbsp;работы. Это может быть конкретная проблема или просто ощущение, что «так больше нельзя».</p>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <h3 class="step__title">Договорённости</h3>
+            <p class="step__text">Если решите продолжить&nbsp;— обсудим формат, частоту встреч и&nbsp;следующие шаги. Если нет&nbsp;— это тоже нормальный исход первой встречи.</p>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <strong>Готовиться не&nbsp;нужно.</strong> Можно прийти с&nbsp;путаницей в&nbsp;мыслях. Можно не&nbsp;знать, с&nbsp;чего начать. Можно не&nbsp;быть «сильной»&nbsp;— на&nbsp;консультации для этого и&nbsp;не&nbsp;требуется.<br><br>
+          Длительность&nbsp;— <strong>60&nbsp;минут</strong> · формат&nbsp;— <strong>онлайн или очно</strong> <span class="placeholder">адрес кабинета</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__photo" aria-hidden="true">
+            <!-- Замените на: <img src="photo.jpg" alt="Наталья Иванова"> -->
+            Фото
+          </div>
+          <div class="about__text">
+            <p class="section-label">О специалисте</p>
+            <h2 class="section-title">Наталья Иванова</h2>
+            <p>Практикующий психолог с&nbsp;опытом работы более 20&nbsp;лет. Помогаю женщинам в&nbsp;периоды жизненных перемен, эмоциональных кризисов и&nbsp;сложных внутренних переживаний.</p>
+            <p>Для меня важно, чтобы на&nbsp;консультации было безопасно: чтобы можно было говорить о&nbsp;стыдном, болезненном, не&nbsp;до&nbsp;конца понятном&nbsp;— и&nbsp;быть услышанной, а&nbsp;не&nbsp;осуждённой.</p>
+            <p>Я&nbsp;не&nbsp;даю готовых советов «как правильно жить». Моя задача&nbsp;— помочь вам лучше понять себя и&nbsp;свою ситуацию и&nbsp;найти способы справляться, которые подходят именно вам.</p>
+            <ul class="about__facts">
+              <li><span class="placeholder">Образование, вуз, год</span></li>
+              <li><span class="placeholder">Дополнительное обучение</span></li>
+              <li><span class="placeholder">Членство в ассоциациях</span></li>
+              <li>Специализация: поддержка женщин в&nbsp;кризисных и&nbsp;переходных периодах</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section id="approach">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Подход</p>
+          <h2 class="section-title">Как я&nbsp;работаю</h2>
+          <p class="section-desc">У&nbsp;каждого человека своя история. Поэтому я&nbsp;не&nbsp;использую универсальные схемы и&nbsp;не&nbsp;предлагаю «рецепты на&nbsp;все случаи».</p>
+        </div>
+        <p style="margin-bottom: 0.5rem; font-size: 0.9375rem;">Подход: <span class="placeholder">интегративный / указать реальный</span></p>
+        <div class="principles">
+          <div class="principle"><strong>Конфиденциальность</strong> Всё, что вы&nbsp;говорите, остаётся между нами</div>
+          <div class="principle"><strong>Уважение</strong> К&nbsp;вашему темпу и&nbsp;личным границам</div>
+          <div class="principle"><strong>Бережность</strong> К&nbsp;чувствам, даже если они кажутся «неудобными»</div>
+          <div class="principle"><strong>Этика</strong> Профессиональные стандарты и&nbsp;честность</div>
+          <div class="principle"><strong>Индивидуальность</strong> Фокус на&nbsp;вашем запросе, а&nbsp;не&nbsp;на&nbsp;моих представлениях</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Ожидания</p>
+          <h2 class="section-title">Чего можно ожидать от&nbsp;работы</h2>
+          <p class="section-desc">Терапия не&nbsp;обещает быстрых чудес. Но&nbsp;многие женщины в&nbsp;процессе работы замечают, что им&nbsp;становится:</p>
+        </div>
+        <ul class="results-list">
+          <li>Понятнее, что они чувствуют и&nbsp;чего хотят</li>
+          <li>Спокойнее в&nbsp;ситуациях, которые раньше «выбивали из&nbsp;колеи»</li>
+          <li>Легче принимать решения&nbsp;— не&nbsp;из&nbsp;страха или вины, а&nbsp;из&nbsp;ясности</li>
+          <li>Проще замечать свои потребности и&nbsp;говорить о&nbsp;них</li>
+          <li>Увереннее в&nbsp;отношениях&nbsp;— в&nbsp;том числе в&nbsp;отношениях с&nbsp;собой</li>
+          <li>Меньше зависимости от&nbsp;внутренней критики</li>
+          <li>Больше ощущения опоры&nbsp;— даже когда внешне мало что изменилось</li>
+        </ul>
+        <p class="footnote">Изменения приходят постепенно. И&nbsp;у&nbsp;каждой&nbsp;— свои.</p>
+      </div>
+    </section>
+
+    <!-- Fears -->
+    <section id="fears">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <p class="section-label">Сомнения</p>
+          <h2 class="section-title">Если вы&nbsp;сомневаетесь&nbsp;— это нормально</h2>
+        </div>
+        <div class="accordion" id="fears-accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Я&nbsp;никогда не&nbsp;ходила к&nbsp;психологу
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Большинство моих клиенток когда-то тоже пришли впервые. Волнение перед первой встречей&nbsp;— обычное дело. Не&nbsp;нужно «знать, что сказать»&nbsp;— разговор выстроим вместе.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Моя проблема, наверное, недостаточно серьёзная
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Если ситуация занимает мысли, мешает спать, работать или общаться&nbsp;— она уже заслуживает внимания. Не&nbsp;нужно дожидаться «дна», чтобы обратиться за&nbsp;поддержкой.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Мне будет сложно говорить о&nbsp;себе
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Вы&nbsp;сами определяете глубину и&nbsp;темп. Никто не&nbsp;будет торопить или «вытаскивать» то, к&nbsp;чему вы&nbsp;не&nbsp;готовы.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              А&nbsp;если мы&nbsp;не&nbsp;сойдёмся?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Первая встреча как раз для этого&nbsp;— понять, комфортно&nbsp;ли вам со&nbsp;мной. Если нет&nbsp;— это нормально, и&nbsp;я&nbsp;помогу сориентироваться, куда можно обратиться дальше.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Это конфиденциально?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Да. Конфиденциальность&nbsp;— обязательная часть профессиональной практики. Всё, о&nbsp;чём вы&nbsp;расскажете, останется между нами.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">Формат</p>
+          <h2 class="section-title">Формат работы и&nbsp;стоимость</h2>
+        </div>
+        <div class="pricing__grid">
+          <div>
+            <table class="pricing-table">
+              <tr>
+                <td>Кому</td>
+                <td>Женщины, индивидуальные консультации</td>
+              </tr>
+              <tr>
+                <td>Длительность</td>
+                <td>60 минут</td>
+              </tr>
+              <tr>
+                <td>Формат</td>
+                <td>Онлайн (видеосвязь) · очно <span class="placeholder">город</span></td>
+              </tr>
+              <tr>
+                <td>Частота</td>
+                <td><span class="placeholder">обычно раз в 1–2 недели</span></td>
+              </tr>
+              <tr>
+                <td>Стоимость</td>
+                <td><span class="placeholder">X ₽ / первая · Y ₽ / последующие</span></td>
+              </tr>
+              <tr>
+                <td>Оплата</td>
+                <td><span class="placeholder">перевод / карта</span></td>
+              </tr>
+              <tr>
+                <td>Отмена</td>
+                <td><span class="placeholder">за 24 часа без штрафа</span></td>
+              </tr>
+            </table>
+          </div>
+          <div class="pricing__form" id="booking">
+            <h3>Записаться на встречу</h3>
+            <p>Отвечу в&nbsp;течение <span class="placeholder">24 часов</span>. Конфиденциально.</p>
+            <form id="contact-form" action="#" method="post">
+              <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" name="name" required placeholder="Как к вам обращаться">
+              </div>
+              <div class="form-group">
+                <label for="contact">Телефон или Telegram</label>
+                <input type="text" id="contact" name="contact" required placeholder="+7 ... или @username">
+              </div>
+              <div class="form-group">
+                <label for="format">Формат</label>
+                <select id="format" name="format">
+                  <option value="online">Онлайн</option>
+                  <option value="offline">Очно</option>
+                  <option value="unsure">Пока не знаю</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Коротко о запросе <span style="font-weight:400">(необязательно)</span></label>
+                <textarea id="message" name="message" placeholder="Можно написать одной фразой или оставить пустым"></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+              <p class="form-note">Нажимая кнопку, вы соглашаетесь с&nbsp;обработкой данных для связи по&nbsp;вашей заявке.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <p class="section-label">Отзывы</p>
+          <h2 class="section-title">Что говорят клиентки</h2>
+          <p class="section-desc">Имена изменены. Разрешение на&nbsp;публикацию получено.</p>
+        </div>
+        <div class="reviews">
+          <blockquote class="review">
+            <p class="review__text">Пришла с&nbsp;ощущением, что я&nbsp;всё делаю не&nbsp;так. Сначала было страшно&nbsp;— думала, меня будут оценивать. Оказалось наоборот: впервые смогла сказать вслух то, что крутила в&nbsp;голове месяцами. Стало чуть легче дышать&nbsp;— буквально.</p>
+            <cite class="review__author">— А., 38 лет</cite>
+          </blockquote>
+          <blockquote class="review">
+            <p class="review__text">После развода не&nbsp;понимала, кто я&nbsp;теперь. Не&nbsp;ждала волшебства, но&nbsp;постепенно начала слышать себя&nbsp;— не&nbsp;через «надо», а&nbsp;через «хочу».</p>
+            <cite class="review__author">— М., 42 года</cite>
+          </blockquote>
+          <blockquote class="review">
+            <p class="review__text"><span class="placeholder">Замените на реальный отзыв с конкретными деталями</span></p>
+            <cite class="review__author">— <span class="placeholder">инициалы</span></cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <p class="section-label">FAQ</p>
+          <h2 class="section-title">Частые вопросы</h2>
+        </div>
+        <div class="accordion" id="faq-accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Сколько нужно консультаций?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Зависит от&nbsp;вашей ситуации и&nbsp;целей. Кто-то приходит на&nbsp;несколько встреч, чтобы прояснить конкретный вопрос. Кто-то работает дольше. Обсудим на&nbsp;первой встрече и&nbsp;будем корректировать по&nbsp;ходу.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Можно ли работать онлайн?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Да. Онлайн подходит, если вам комфортно разговаривать из&nbsp;дома и&nbsp;есть стабильный интернет. Для большинства запросов онлайн-формат сопоставим с&nbsp;очным.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Что если я&nbsp;заплачу на&nbsp;сессии?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Это нормально. Слёзы на&nbsp;консультации&nbsp;— не&nbsp;слабость и&nbsp;не&nbsp;«срыв». Это часть процесса.
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              Нужно ли что-то готовить к&nbsp;первой встрече?
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion__body">
+              Нет. Можно прийти с&nbsp;одной фразой: «Мне плохо, и&nbsp;я&nbsp;не&nbsp;понимаю почему».
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-final">
+      <div class="container">
+        <h2 class="section-title">Вам не&nbsp;обязательно проходить это одной</h2>
+        <p>Иногда самое сложное&nbsp;— не&nbsp;«решить проблему», а&nbsp;решиться на&nbsp;первый разговор. Если сейчас вам важно поговорить о&nbsp;том, что происходит&nbsp;— можно начать с&nbsp;одной встречи. Спокойно, без обязательств, в&nbsp;темпе, который вам подходит.</p>
+        <a href="#booking" class="btn btn--primary">Записаться на консультацию</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">Наталья Иванова · Психолог</div>
+      <div class="footer__links">
+        <span class="placeholder">город</span>
+        <a href="mailto:email@example.com"><span class="placeholder">email</span></a>
+        <a href="#"><span class="placeholder">Telegram</span></a>
+        <a href="#">Политика конфиденциальности</a>
+      </div>
+      <p class="footer__copy">© 2026 Наталья Иванова. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Accordion
+    document.querySelectorAll('.accordion').forEach(accordion => {
+      accordion.querySelectorAll('.accordion__trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.accordion__item');
+          const isOpen = item.classList.contains('is-open');
+
+          accordion.querySelectorAll('.accordion__item').forEach(i => {
+            i.classList.remove('is-open');
+            i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
+          });
+
+          if (!isOpen) {
+            item.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+
+    // Form submit (placeholder — подключите backend или Formspree)
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Заявка отправлена. Подключите форму к Telegram, почте или CRM — сейчас это демо.');
+    });
+  </script>
+
+</body>
+</html>
